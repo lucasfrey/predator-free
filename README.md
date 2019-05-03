@@ -1,2 +1,2 @@
-# predator-free
+# Predator Free
 Predator Free website
