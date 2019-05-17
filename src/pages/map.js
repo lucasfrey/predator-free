@@ -32,7 +32,7 @@ class MapIndex extends React.Component {
 						<MapComponent 
 							isMarkerShown={this.state.showMarkers}
 							showZones={this.state.showZones}
-							googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAV9GarEbjNh5ryLf-AMsk0WAMIbwFmrYE&libraries=geometry,drawing,places"
+							googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.GMAPS_KEY}&libraries=geometry,drawing,places`}
 							loadingElement={<div style={{ height: `100%` }} />}
 							containerElement={<div style={{ height: `600px` }} />}
 							mapElement={<div style={{ height: `100%` }} />}

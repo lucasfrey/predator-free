@@ -5,6 +5,10 @@ try {
   contentfulConfig = require('./.contentful')
 } catch (_) {}
 
+require("dotenv").config({
+	path: `.env.${process.env.NODE_ENV}`,
+})
+
 // Overwrite the Contentful config with environment variables if they exist
 contentfulConfig = {
   spaceId: process.env.CONTENTFUL_SPACE_ID || contentfulConfig.spaceId,
@@ -44,3 +48,11 @@ module.exports = {
     },
   ],
 }
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+	actions.setWebpackConfig({
+	  node : {
+		fs : "empty"
+	  }
+	})
+};
