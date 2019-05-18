@@ -1,7 +1,14 @@
 import React from 'react'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, KmlLayer } from "react-google-maps"
+import PropTypes from 'prop-types'
 
 class MapComponent extends React.Component {
+	static propTypes = {
+		showZones: PropTypes.bool,
+		isMarkerShown: PropTypes.bool,
+		traps: PropTypes.array
+	};
+
 	render() {
 		return (
 			<GoogleMap
@@ -17,9 +24,23 @@ class MapComponent extends React.Component {
 					options={{ preserveViewport: true }}
 				/>}
 				
-				{this.props.isMarkerShown && <Marker position={{ lat: -41.3090813, lng: 174.76115800000002 }} />}
+				{this.props.isMarkerShown && this.renderMarkers()}
 			</GoogleMap>
 		)
+	}
+
+	renderMarkers() {
+		const { traps } = this.props;
+		
+		return traps.map(( trap ) => {
+			const { address, location } = trap.node;
+
+			if (location && location.lat && location.lon) {
+				return <Marker 
+							key={address} 
+							position={{ lat: location.lat, lng: location.lon }} />
+			}
+		})
 	}
 }
 

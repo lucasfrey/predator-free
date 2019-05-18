@@ -5,10 +5,6 @@ try {
   contentfulConfig = require('./.contentful')
 } catch (_) {}
 
-require("dotenv").config({
-	path: `.env.${process.env.NODE_ENV}`,
-})
-
 // Overwrite the Contentful config with environment variables if they exist
 contentfulConfig = {
   spaceId: process.env.CONTENTFUL_SPACE_ID || contentfulConfig.spaceId,
@@ -37,6 +33,17 @@ module.exports = {
       options: contentfulConfig,
     },
     {
+      resolve: `gatsby-plugin-env-variables`,
+      options: {
+        whitelist: [
+            "GMAPS_KEY",
+            "CONTENTFUL_DELIVERY_TOKEN",
+            "CONTENTFUL_ENVIRONMENT",
+            "CONTENTFUL_SPACE_ID"
+        ]
+      },
+    },
+    {
         resolve: `gatsby-plugin-google-tagmanager`,
         options: {
             id: "GTM-5KFHPG",
@@ -48,11 +55,3 @@ module.exports = {
     },
   ],
 }
-
-exports.onCreateWebpackConfig = ({ actions }) => {
-	actions.setWebpackConfig({
-	  node : {
-		fs : "empty"
-	  }
-	})
-};
