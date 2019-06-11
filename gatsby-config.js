@@ -53,7 +53,7 @@ module.exports = {
             includeInDevelopment: true,
         },
     },
-	{
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: "Predator Free",
