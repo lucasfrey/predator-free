@@ -26,6 +26,7 @@ module.exports = {
   },
   pathPrefix: '/predator-free',
   plugins: [
+    'gatsby-plugin-offline',
     'gatsby-transformer-remark',
     'gatsby-plugin-react-helmet',
     {
