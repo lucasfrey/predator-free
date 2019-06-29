@@ -3,6 +3,8 @@ import PropTypes from "prop-types"
 
 export default class HTML extends React.Component {
   render() {
+    const googleSrc = `https://maps.googleapis.com/maps/api/js?key=${process.env.GMAPS_KEY}&libraries=places`;
+
     return (
       <html {...this.props.htmlAttributes}>
         <head>
@@ -23,7 +25,7 @@ export default class HTML extends React.Component {
           />
           {this.props.postBodyComponents}
           <script type="text/javascript" 
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAV9GarEbjNh5ryLf-AMsk0WAMIbwFmrYE&libraries=places">
+            src={googleSrc}>
           </script> 
         </body>
       </html>
