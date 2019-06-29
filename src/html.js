@@ -21,7 +21,10 @@ export default class HTML extends React.Component {
             id="___gatsby"
             dangerouslySetInnerHTML={{ __html: this.props.body }}
           />
-		  {this.props.postBodyComponents}
+          {this.props.postBodyComponents}
+          <script type="text/javascript" 
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAV9GarEbjNh5ryLf-AMsk0WAMIbwFmrYE&libraries=places">
+          </script> 
         </body>
       </html>
     )
