@@ -39,6 +39,7 @@ module.exports = {
         whitelist: [
             "GMAPS_KEY",
             "CONTENTFUL_DELIVERY_TOKEN",
+            "CONTENTFUL_MANAGEMENT_TOKEN",
             "CONTENTFUL_ENVIRONMENT",
             "CONTENTFUL_SPACE_ID"
         ]

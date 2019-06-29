@@ -5,10 +5,10 @@ import PropTypes from 'prop-types'
 class MapComponent extends React.Component {
 	static propTypes = {
 		showZones: PropTypes.bool,
-		showKills: PropTypes.bool,
+		showlCatch: PropTypes.bool,
 		showTraps: PropTypes.bool,
 		traps: PropTypes.array,
-		kills: PropTypes.array
+		catches: PropTypes.array
 	};
 
 	render() {
@@ -20,8 +20,7 @@ class MapComponent extends React.Component {
 					url="https://raw.githubusercontent.com/lucasfrey/predator-free/master/static/data/Team-Leader-Zones.kml"
 					options={{ preserveViewport: true }}
 				/>}
-				
-				{this.props.showKills && this.renderMarkers('kills')}
+				{this.props.showCatches && this.renderMarkers('catches')}
 				{this.props.showTraps && this.renderMarkers('traps')}
 			</GoogleMap>
 		)

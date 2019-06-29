@@ -35,6 +35,18 @@ a {
   width: calc(100% - 10vmin);
   margin: 0 auto;
   padding: 5vmin 0;
+  position: relative;
+}
+
+.wrapper--loading::after {
+	content: '';
+	position: absolute;
+	background: #FFFFFF99;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 50
 }
 
 /**

@@ -13,16 +13,17 @@ class MapIndex extends React.Component {
 		this.state = {
 			showZones: true,
 			showMarkers: true,
-			showTraps: true
+			showTraps: true,
+			showCatches: true
 		}
 	}
 
 	render() {
 		const siteTitle = get(this, 'props.data.site.siteMetadata.title')
 		const traps = get(this, 'props.data.allContentfulTrap.edges')
-		const kills = get(this, 'props.data.allContentfulKill.edges')
+		const catches = get(this, 'props.data.allContentfulCatch.edges')
 
-		const { showTraps, showKills } = this.state
+		const { showTraps, showCatches } = this.state
 
 		return (
 			<Layout location={this.props.location} >
@@ -35,9 +36,9 @@ class MapIndex extends React.Component {
 						{this.renderFilters()}
 						<MapComponent 
 							showTraps={showTraps}
-							showKills={showKills}
+							showCatches={showCatches}
 							traps={traps}
-							kills={kills}
+							catches={catches}
 							showZones={this.state.showZones}
 							googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.GMAPS_KEY}&libraries=geometry,drawing,places`}
 							loadingElement={<div style={{ height: `100%` }} />}
@@ -58,8 +59,8 @@ class MapIndex extends React.Component {
 				<label htmlFor="showZones">Show zones</label><br />
 				<input type="checkbox" checked={this.state.showTraps} id="showTraps" name="showTraps" onChange={this.handleChange} />
 				<label htmlFor="showTraps">Show traps</label><br/>
-				<input type="checkbox" checked={this.state.showKills} id="showKills" name="showKills" onChange={this.handleChange} />
-				<label htmlFor="showKills">Show kills</label><br/>
+				<input type="checkbox" checked={this.state.showCatches} id="showCatches" name="showCatches" onChange={this.handleChange} />
+				<label htmlFor="showCatches">Show catches</label><br/>
 			</div>
 		)
 	}
@@ -91,7 +92,7 @@ export const pageQuery = graphql`
 		}
 	  }
 	}
-	allContentfulKill {
+	allContentfulCatch {
 	  edges {
 		node {
 		  location {
