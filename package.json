@@ -7,7 +7,9 @@
     "url": "https://github.com/lucasfrey/predator-free/issues"
   },
   "dependencies": {
+    "@hot-loader/react-dom": "^16.5.2",
     "dotenv": "^8.0.0",
+    "formik": "^1.5.7",
     "fs": "0.0.1-security",
     "gatsby-cli": "^2.5.13",
     "gatsby-image": "^2.0.13",

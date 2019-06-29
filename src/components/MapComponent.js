@@ -5,8 +5,10 @@ import PropTypes from 'prop-types'
 class MapComponent extends React.Component {
 	static propTypes = {
 		showZones: PropTypes.bool,
-		isMarkerShown: PropTypes.bool,
-		traps: PropTypes.array
+		showKills: PropTypes.bool,
+		showTraps: PropTypes.bool,
+		traps: PropTypes.array,
+		kills: PropTypes.array
 	};
 
 	render() {
@@ -18,29 +20,28 @@ class MapComponent extends React.Component {
 					url="https://raw.githubusercontent.com/lucasfrey/predator-free/master/static/data/Team-Leader-Zones.kml"
 					options={{ preserveViewport: true }}
 				/>}
-
-				{this.props.showZones && <KmlLayer
-					url="https://raw.githubusercontent.com/lucasfrey/predator-free/master/static/data/Deployed-Traps-21-Aug-18.kml"
-					options={{ preserveViewport: true }}
-				/>}
 				
-				{this.props.isMarkerShown && this.renderMarkers()}
+				{this.props.showKills && this.renderMarkers('kills')}
+				{this.props.showTraps && this.renderMarkers('traps')}
 			</GoogleMap>
 		)
 	}
 
-	renderMarkers() {
-		const { traps } = this.props;
-		
-		return traps.map(( trap ) => {
-			const { address, location } = trap.node;
-
-			if (location && location.lat && location.lon) {
-				return <Marker 
-							key={address} 
-							position={{ lat: location.lat, lng: location.lon }} />
-			}
-		})
+	renderMarkers(type) {
+		if (this.props[type]) {
+			return this.props[type].map(( trap ) => {
+				const { address, location } = trap.node;
+				var iconBase = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/';
+	
+				if (location && location.lat && location.lon) {
+					return <Marker 
+								key={address}
+								icon={iconBase + 'info-i_maps.png'}
+								position={{ lat: location.lat, lng: location.lon }} />
+				}
+			})
+		}
+	
 	}
 }
 
