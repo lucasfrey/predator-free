@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
-import styles from './blog.module.css'
+import styles from './form.module.css'
 import Layout from "../components/layout"
 import AddressFinder from "../components/AddressFinder"
 import { Formik } from 'formik';
@@ -23,7 +23,7 @@ class FormIndex extends React.Component {
         this.state = {
             address: null,
             saving: false,
-            success: true
+            success: false
         }
     }
 
@@ -90,18 +90,16 @@ class FormIndex extends React.Component {
                 }) => (
                     <form onSubmit={handleSubmit}>
                         <label htmlFor="email">Email address</label>
-                        <br/>
                         <input type="text" name="email" 
                             onChange={handleChange}
                             onBlur={handleBlur}
                             value={values.email}
                             />
-                            {errors.email && touched.email && <div>{errors.email}</div>}
-                        <br/><br/>
+                            {errors.email && touched.email && <div className={styles.error}>{errors.email}</div>}
+                        <br/>
                         <label htmlFor="address">Street Address</label>
                         <AddressFinder onChange={e => setFieldValue('address', e)} updateSelectedAddress={this.updateSelectedAddress} />
-                        {errors.address && touched.address && <div>{errors.address}</div>}
-                        <br/>
+                        {errors.address && touched.address && <div className={styles.error}>{errors.address}</div>}
                         <label htmlFor="date_activity">Date of activity</label>
                         <br/>
                         <DatePicker
@@ -110,12 +108,12 @@ class FormIndex extends React.Component {
                             value={values.date_activity}
                             locale="en-NZ"
                         />
-                        {errors.date_activity && touched.date_activity && <div>{errors.date_activity}</div>}
+                        {errors.date_activity && touched.date_activity && <div className="error">{errors.date_activity}</div>}
                         <br/>
                         <br/>
                         <label htmlFor="catch_by">Catch by:</label>
                         <br/>
-                        <select name="catch_by" onChange={handleChange}
+                        <select className={styles.select} name="catch_by" onChange={handleChange}
                             onBlur={handleBlur}
                             value={values.catch_by}>
                             <option value="trap">Trap</option>
@@ -123,12 +121,11 @@ class FormIndex extends React.Component {
                             <option value="hedgehog">Other</option>
                         </select>
                         <br/>
-                        <br/>
                         <p>What did you catch?</p>
                         <input type="number" style={{ width: '20px' }} name="kill_number" onChange={handleChange}
                             onBlur={handleBlur}
                             value={values.kill_number} /> x&nbsp;
-                        <select name="kill" 
+                        <select className={styles.select} name="kill" 
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                                 value={values.kill}>
@@ -138,12 +135,13 @@ class FormIndex extends React.Component {
                         </select>
                         <br/>
                         <br/>
-                        <label htmlFor="is_dead">Is the catch dead?</label>
+                        
                         <input type="checkbox" name="is_dead" 
                             checked={values.is_dead}
                             onChange={handleChange}
                             onBlur={handleBlur}
                             value={values.is_dead} />
+                        <label htmlFor="is_dead">Catch is dead?</label>
                         <br/>
                         <br/>
                         <label htmlFor="date_activity">Comments:</label>
