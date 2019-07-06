@@ -30,7 +30,7 @@ class MapComponent extends React.Component {
 		if (this.props[type]) {
 			return this.props[type].map(( trap ) => {
 				const { address, location, victim } = trap.node;
-				var iconBase = 'static/images/';
+				var iconBase = '../static/images/';
 
 				if (location && location.lat && location.lon) {
 					return <Marker 
