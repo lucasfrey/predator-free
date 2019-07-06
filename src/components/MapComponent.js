@@ -29,13 +29,13 @@ class MapComponent extends React.Component {
 	renderMarkers(type) {
 		if (this.props[type]) {
 			return this.props[type].map(( trap ) => {
-				const { address, location } = trap.node;
-				var iconBase = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/';
-	
+				const { address, location, victim } = trap.node;
+				var iconBase = 'static/images/';
+
 				if (location && location.lat && location.lon) {
 					return <Marker 
 								key={address}
-								icon={iconBase + 'info-i_maps.png'}
+								icon={`${iconBase}icon-${victim}.png`}
 								position={{ lat: location.lat, lng: location.lon }} />
 				}
 			})

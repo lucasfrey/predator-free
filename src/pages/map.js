@@ -99,6 +99,8 @@ export const pageQuery = graphql`
 			lat
 			lon
 		  }
+		  killer
+		  victim
 		}
 	  }
 	}
