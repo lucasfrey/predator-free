@@ -162,7 +162,7 @@ class FormIndex extends React.Component {
 							</div>
 							<div className="col-6@md">
 								<div className="select">
-									<select className="form-control width-100%" name="catch_by" onChange={handleChange}
+									<select className="form-control width-100%" name="kill" onChange={handleChange}
 										onBlur={handleBlur}
 										value={values.kill}>
 										<option value="Mouse">Mouse</option>
