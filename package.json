@@ -9,6 +9,7 @@
   "dependencies": {
     "@hot-loader/react-dom": "^16.8.6",
     "classnames": "^2.2.6",
+    "codyhouse-framework": "^2.1.0",
     "date-fns": "^2.0.0-alpha.1",
     "dotenv": "^8.0.0",
     "formik": "^1.5.7",

@@ -54,13 +54,13 @@ class AddressFinder extends Component {
 									{...getInputProps({
 										id: fieldTitle,
 										name: fieldTitle,
-										className: cx('addressfinder__field', { 'addressfinder__field--nomargin': nomargin }),
+										className: cx('addressfinder__field form-control width-100%', { 'addressfinder__field--nomargin': nomargin }),
 										placeholder: placeholder || '',
 										autoComplete: 'off'
 									})}
 								/>
 								{error && <p className="addressfinder__error" dangerouslySetInnerHTML={{ __html: error }} />}
-								<ul className="addressfinder__results">
+								<ul className="dropdown">
 									{loading && <li className="addressfinder__result">Loading...</li>}
 									{this.renderSuggestions(suggestions, getSuggestionItemProps)}
 								</ul>
@@ -75,13 +75,13 @@ class AddressFinder extends Component {
 
 	renderSuggestions(suggestions, getSuggestionItemProps) {
 		return suggestions.map(suggestion => {
-			const className = suggestion.active ? 'addressfinder__result addressfinder__result--active' : 'addressfinder__result';
+			const className = suggestion.active ? 'dropdown__wrapper addressfinder__result--active' : 'dropdown__wrapper';
 
 			return (
 				<li {...getSuggestionItemProps(suggestion, {
 					className
 				})}>
-					<span>{suggestion.description}</span>
+					<span className="dropdown__trigger inline-flex items-center">{suggestion.description}</span>
 				</li>
 			);
 		});

@@ -1,0 +1,254 @@
+/* -------------------------------- 
+
+File#: _1_number-input
+Title: Number input
+Descr: Number input field with custom increment buttons
+
+-------------------------------- */
+
+.number-input__btn { // hide custom increment buttons if js is disabled
+	display: none;
+  }
+  
+  .js {
+	.number-input { // basic style
+	  .form-control::-webkit-inner-spin-button, 
+	  .form-control::-webkit-outer-spin-button { // hide native increment on webkit
+		display: none;
+	  }
+  
+	  .form-control { // hide native increment on Firefox 
+		-moz-appearance: textfield;
+		display: block;
+	  }
+	}
+  
+	.number-input__btn { // custom increment buttons 
+	  display: inline-block; // flex fallback
+	  display: flex;
+	}
+  }
+  
+  // default - custom increment buttons inside input
+  .js .number-input--v1 {
+	--number-input-btn-width: 40px;
+	position: relative;
+	width: 5em;
+  
+	.form-control {
+	  padding-right: var(--number-input-btn-width);
+	  width: 100%;
+	}
+  
+	.number-input__btns {
+	  position: absolute;
+	  height: calc(100% - var(--space-xxxs)*2);
+	  top: var(--space-xxxs);
+	  right: 0;
+	  width: var(--number-input-btn-width);
+	  display: flex;
+	  flex-direction: column;
+	}
+  
+	.number-input__btn { 
+	  position: relative;
+	  height: 50%;
+	  width: calc(100% - var(--space-xxxs));
+	  background: var(--color-contrast-lower);
+	  border-radius: var(--radius-sm);
+  
+	  .icon {
+		display: block;
+		font-size: 0.8em; // icon size
+		width: 1em;
+		height: 1em;
+		position: absolute;
+		left: calc(50% - 0.5em);
+		top: calc(50% - 0.5em);
+	  }
+  
+	  &:hover {
+		background-color: var(--color-contrast-low);
+	  }
+  
+	  &:focus {
+		outline: none;
+		background-color: var(--color-primary);
+  
+		.icon {
+		  color: var(--color-white);
+		}
+	  }
+  
+	  &:active {
+		background-color: lightness(var(--color-primary), 0.9);
+	  }
+	}
+  
+	.number-input__btn--plus {
+	  margin-bottom: var(--space-xxxxs);
+	}
+  }
+  
+  // --v2 - custom increment w/ buttons outside input element
+  .js .number-input--v2 {
+	--number-input-btn-width: 1.6em;
+	display: flex;
+	align-items: center;
+	font-size: 0.875em;
+  
+	.form-control {
+	  margin: 0 var(--space-xxs);
+	  width: 4em;
+	  order: 1;
+	  text-align: center;
+	}
+  
+	.number-input__btn {
+	  width: var(--number-input-btn-width);
+	  height: var(--number-input-btn-width);
+	  border-radius: 50%;
+	  flex-shrink: 0;
+	  justify-content: center;
+	  align-items: center;
+	  background-color: var(--color-contrast-lower);
+  
+	  &:hover {
+		background-color: var(--color-contrast-low);
+	  }
+  
+	  &:focus {
+		outline: none;
+		background-color: var(--color-primary);
+  
+		.icon {
+		  color: var(--color-white);
+		}
+	  }
+  
+	  &:active {
+		background-color: lightness(var(--color-primary), 0.9);
+	  }
+  
+	  .icon {
+		font-size: 12px; // icon size
+		width: 1em;
+		height: 1em;
+	  }
+	}
+  
+	.number-input__btn--plus {
+	  order: 2;
+	}
+  }/* -------------------------------- 
+
+File#: _1_radios-checkboxes
+Title: Radios and Checkboxes
+Descr: Custom radio and checkbox buttons
+
+-------------------------------- */
+
+:root {
+  /* radios and checkboxes */
+  --checkbox-radio-size: 1em;
+  --checkbox-radio-translate-y: -0.1em; // edit to align buttons with labels
+
+  /* radio buttons */
+  --radio-marker-size: 8px;
+
+  /* checkboxes */
+  --checkbox-marker-size: 12px;
+  --checkbox-radius: 3px;
+}
+
+.radio-list--custom, .checkbox-list--custom {
+  input[type="radio"],
+  input[type="checkbox"] {
+    // hide native buttons
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    height: 0;
+    width: 0;
+    pointer-events: none;
+  }
+
+  input[type="radio"] + label,
+  input[type="checkbox"] + label {
+    display: inline-block;
+  }
+  
+  input[type="radio"] + label::before,
+  input[type="checkbox"] + label::before {
+    // custom buttons basic style
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    flex-shrink: 0;
+    width: var(--checkbox-radio-size);
+    height: var(--checkbox-radio-size);
+    background-color: var(--color-bg);
+    border: 2px solid var(--color-contrast-low);
+    margin-right: var(--space-xxxs);
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    top: var(--checkbox-radio-translate-y);
+    transition: transform 0.2s;
+  }
+  
+  input[type="radio"] + label::before {
+    // radio button radius
+    border-radius: 50%;
+  }
+  
+  input[type="checkbox"] + label::before {
+    // checkbox button radius
+    border-radius: var(--checkbox-radius);
+  }
+  
+  input[type="radio"]:checked + label::before,
+  input[type="checkbox"]:checked + label::before {
+    // checked state
+    background-color: var(--color-primary);
+    box-shadow: none;
+    border-color: var(--color-primary);
+  }
+  
+  input[type="radio"]:active + label::before,
+  input[type="checkbox"]:active + label::before {
+    // active state
+    transform: scale(0.8);
+  }
+  
+  input[type="radio"]:checked:active + label::before,
+  input[type="checkbox"]:checked:active + label::before {
+    transform: none;
+    transition: none;
+  }
+  
+  input[type="radio"]:checked + label::before {
+    // radio button icon
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cg class='nc-icon-wrapper' fill='%23ffffff'%3E%3Ccircle cx='8' cy='8' r='8' fill='%23ffffff'%3E%3C/circle%3E%3C/g%3E%3C/svg%3E");
+    background-size: var(--radio-marker-size);
+  }
+  
+  input[type="checkbox"]:checked + label::before {
+    // checkbox button icon
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cg class='nc-icon-wrapper' stroke-width='2' fill='%23ffffff' stroke='%23ffffff'%3E%3Cpolyline fill='none' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' points='1,9 5,13 15,3 ' data-cap='butt'%3E%3C/polyline%3E%3C/g%3E%3C/svg%3E");
+    background-size: var(--checkbox-marker-size);
+  }
+
+  input[type="radio"]:checked:active + label::before,
+  input[type="checkbox"]:checked:active + label::before,
+  input[type="radio"]:focus + label::before,
+  input[type="checkbox"]:focus + label::before {
+    // focus state
+    border-color: var(--color-primary);
+    --color-shadow: hsla(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l), 0.2); // fix iOS 12 bug
+    box-shadow: 0 0 0 3px var(--color-shadow);
+  }
+}

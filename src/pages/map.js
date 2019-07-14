@@ -27,11 +27,19 @@ class MapIndex extends React.Component {
 
 		return (
 			<Layout location={this.props.location} >
-				<div style={{ background: '#fff' }}>
+				<div>
 					<Helmet title={siteTitle} />
-					<div className={styles.hero}>
-						<h4>Map</h4>
-					</div>
+					<section className="hero hero--diagonal padding-y-xxl">
+						<div className="container max-width-adaptive-sm">
+							<div className="hero__content text-center">
+								<div className="hero__label margin-bottom-xxs"></div>
+
+								<div className="text-component margin-bottom-sm">
+									<h3>Map</h3>
+								</div>
+							</div>
+						</div>
+					</section>
 					<div className="wrapper">
 						{this.renderFilters()}
 						<MapComponent 
