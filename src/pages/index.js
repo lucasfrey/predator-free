@@ -16,7 +16,7 @@ class RootIndex extends React.Component {
 			<section className="hero hero--diagonal padding-y-xxl">
 				<div className="container max-width-adaptive-sm">
 				<div className="hero__content text-center">
-					<div className="hero__label margin-bottom-xxs">This is</div>
+					<div className="hero__label margin-bottom-xxs">Welcome to</div>
 
 					<div className="text-component margin-bottom-sm">
 						<h3>Predator Free Brooklyn</h3>

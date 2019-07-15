@@ -25,6 +25,7 @@ class AddressFinder extends Component {
 
 	static propTypes = {
 		updateSelectedAddress: PropTypes.func.isRequired,
+		invalid: PropTypes.bool,
 		onChange: PropTypes.func.isRequired,
 		error: PropTypes.array,
 		title: PropTypes.string
@@ -36,7 +37,7 @@ class AddressFinder extends Component {
 
 	render() {
 		const { selected, address, error } = this.state;
-		const { placeholder, nomargin, title } = this.props;
+		const { placeholder, nomargin, title, invalid } = this.props;
 		const fieldTitle = title || 'address';
 
 		return (
@@ -54,6 +55,7 @@ class AddressFinder extends Component {
 									{...getInputProps({
 										id: fieldTitle,
 										name: fieldTitle,
+										'aria-invalid': invalid,
 										className: cx('addressfinder__field form-control width-100%', { 'addressfinder__field--nomargin': nomargin }),
 										placeholder: placeholder || '',
 										autoComplete: 'off'

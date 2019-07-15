@@ -38,7 +38,7 @@ class FormIndex extends React.Component {
 		  <section className="hero hero--diagonal padding-y-xl">
 			<div className="container max-width-adaptive-sm">
 				<div className="hero__content text-center">
-					<div className="hero__label margin-bottom-xxs">This is</div>
+					<div className="hero__label margin-bottom-xxs">Help rid Brooklyn of rats!</div>
 
 					<div className="text-component margin-bottom-sm">
 						<h3>Register your catch</h3>
@@ -95,7 +95,7 @@ class FormIndex extends React.Component {
 						<div className="margin-bottom-sm">
 							<div className="grid grid-gap-sm">
 								<div className="col-6@md">
-									<label className="form-label margin-bottom-xxs" for="inputEmail">Email:</label>
+									<label className="form-label margin-bottom-xxs" htmlFor="inputEmail">Email:</label>
 									<input type="text" name="email" 
 										className="form-control width-100%"
 										onChange={handleChange}
@@ -105,16 +105,16 @@ class FormIndex extends React.Component {
 										{errors.email && touched.email && <div className={styles.error}>{errors.email}</div>}
 								</div>
 								<div className="col-6@md">
-									<label className="form-label margin-bottom-xxs" for="inputName">Street Address:</label>
-									<AddressFinder onChange={e => setFieldValue('address', e)} updateSelectedAddress={this.updateSelectedAddress} />
-										{errors.address && touched.address && <div role="alert" class="form__msg-error form__msg-error--is-visible">{errors.address}</div>}
+									<label className="form-label margin-bottom-xxs" htmlFor="inputName">Street Address:</label>
+									<AddressFinder invalid={errors.address && touched.address} onChange={e => setFieldValue('address', e)} updateSelectedAddress={this.updateSelectedAddress} />
+										{errors.address && touched.address && <div role="alert" className="form__msg-error form__msg-error--is-visible">{errors.address}</div>}
 								</div>
 							</div>
 						</div>
 						<div className="margin-bottom-sm">
 							<div className="grid grid-gap-sm">
 								<div className="col-6@md">
-									<label className="form-label margin-bottom-xxs" for="inputEmail">Date of activity:</label>
+									<label className="form-label margin-bottom-xxs" htmlFor="inputEmail">Date of activity:</label>
 									<DatePicker
 										className="form-control width-100%"
 										name="date_activity"
@@ -125,7 +125,7 @@ class FormIndex extends React.Component {
 									{errors.date_activity && touched.date_activity && <div className="error">{errors.date_activity}</div>}
 								</div>
 								<div className="col-6@md">
-									<label className="form-label margin-bottom-xxxs" for="selectThis">Catch by:</label>
+									<label className="form-label margin-bottom-xxxs" htmlFor="selectThis">Catch by:</label>
 									<div className="select">
 										<select className="form-control width-100%" name="catch_by" onChange={handleChange}
 											onBlur={handleBlur}
@@ -140,23 +140,23 @@ class FormIndex extends React.Component {
 							</div>
 						</div>
 						<br/>
-						<div class="margin-bottom-md">
+						<div className="margin-bottom-md">
 						<legend className="form-legend">What did you catch?</legend>
 						<div className="grid grid-gap-sm">
 							<div className="col-2@md">
-								<div class="number-input number-input--v1 js-number-input">
-									<input class="form-control js-number-input__value" type="number" name="kill_number" id="kill_number" min="0" max="10" step="1" value="1" 
+								<div className="number-input number-input--v1 js-number-input">
+									<input className="form-control js-number-input__value" type="number" name="kill_number" id="kill_number" min="0" max="10" step="1" value="1" 
 									onChange={handleChange}
 									onBlur={handleBlur}
 									value={values.kill_number} />
-									<div class="number-input__btns" aria-hidden="true">
-										<button class="reset number-input__btn number-input__btn--plus js-number-input__btn">
-										<svg class="icon" viewBox="0 0 16 16"><g><polygon points="13,11 8,5 3,11 "></polygon></g></svg>
-										</button>
+									<div className="number-input__btns" aria-hidden="true">
+										<a className="reset number-input__btn number-input__btn--plus js-number-input__btn">
+										<svg className="icon" viewBox="0 0 16 16"><g><polygon points="13,11 8,5 3,11 "></polygon></g></svg>
+										</a>
 										
-										<button class="reset number-input__btn number-input__btn--minus js-number-input__btn">
-										<svg class="icon" viewBox="0 0 16 16"><g><polygon points="3,5 8,11 13,5 "></polygon></g></svg>
-										</button>
+										<a className="reset number-input__btn number-input__btn--minus js-number-input__btn">
+										<svg className="icon" viewBox="0 0 16 16"><g><polygon points="3,5 8,11 13,5 "></polygon></g></svg>
+										</a>
 									</div>
 								</div>
 							</div>
@@ -174,21 +174,21 @@ class FormIndex extends React.Component {
 							</div>
 						</div>
 						</div>
-						<div class="margin-bottom-md">
-							<ul class="radio-list radio-list--custom">
+						<div className="margin-bottom-md">
+							<ul className="radio-list radio-list--custom">
 								<li>
 									<input type="checkbox" name="is_dead" id="is_dead"
 										checked={values.is_dead}
 										onChange={handleChange}
 										onBlur={handleBlur}
 										value={values.is_dead} />
-									<label for="is_dead">Catch is dead</label>
+									<label htmlFor="is_dead">Catch is dead</label>
 								</li>
 							</ul>
 						</div>
-						<div class="margin-bottom-md">
-							<label class="form-label margin-bottom-xxs" for="textarea">Comments:</label>
-							<textarea class="form-control width-100%" name="comments" id="comments" cols="30" rows="10"
+						<div className="margin-bottom-md">
+							<label className="form-label margin-bottom-xxs" htmlFor="textarea">Comments:</label>
+							<textarea className="form-control width-100%" name="comments" id="comments" cols="30" rows="10"
 							onChange={handleChange}
 							onBlur={handleBlur}
 							value={values.comments}></textarea>
