@@ -61,13 +61,33 @@ class MapIndex extends React.Component {
 	renderFilters() {
 		return (
 			<div>
-				<h4>Filters</h4>
-				<input type="checkbox" checked={this.state.showZones} id="showZones" name="showZones" onChange={this.handleChange} />
-				<label htmlFor="showZones">Show zones</label><br />
-				<input type="checkbox" checked={this.state.showTraps} id="showTraps" name="showTraps" onChange={this.handleChange} />
-				<label htmlFor="showTraps">Show traps</label><br/>
-				<input type="checkbox" checked={this.state.showCatches} id="showCatches" name="showCatches" onChange={this.handleChange} />
-				<label htmlFor="showCatches">Show catches</label><br/>
+				<h4 className="margin-bottom-sm">Filters</h4>
+				<div className="grid grid-gap-sm margin-bottom-md">
+					<div className="col-3@md">
+						<div class="switch">
+							<input className="switch__input" type="checkbox" checked={this.state.showZones} id="showZones" name="showZones" onChange={this.handleChange} />
+							<label className="switch__label" htmlFor="showZones">On</label>
+							<div className="switch__marker"></div>
+						</div>
+						<span>Team Zones</span>
+					</div>
+					<div className="col-3@md">
+						<div class="switch">
+							<input className="switch__input" type="checkbox" checked={this.state.showTraps} id="showTraps" name="showTraps" onChange={this.handleChange} />
+							<label className="switch__label" htmlFor="showTraps">On</label>
+							<div className="switch__marker"></div>
+						</div>
+						<span>Traps</span>
+					</div>
+					<div className="col-3@md">
+						<div class="switch">
+							<input className="switch__input" type="checkbox" checked={this.state.showCatches} id="showCatches" name="showCatches" onChange={this.handleChange} />
+							<label className="switch__label" htmlFor="showCatches">On</label>
+							<div className="switch__marker"></div>
+						</div>
+						<span>Catches</span>
+					</div>
+				</div>
 			</div>
 		)
 	}
